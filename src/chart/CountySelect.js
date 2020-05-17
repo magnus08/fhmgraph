@@ -6,7 +6,7 @@ export function CountySelect({data}) {
   const counties = data[0].slice(1);
 
   const [county, setCounty] = useState(counties.findIndex(c => c === "Stockholm"));
-  const [avg, setAvg] = useState(5);
+  const [avg, setAvg] = useState(7);
 
   const dataCleaned = data.slice(1);
   const getDates = () => dataCleaned.map(d => d[0]);
