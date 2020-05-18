@@ -1,5 +1,5 @@
 import React from 'react';
-import {CartesianGrid, Line, BarChart, LineChart, XAxis, YAxis, Bar, ComposedChart} from "recharts";
+import {Bar, CartesianGrid, ComposedChart, Line, XAxis, YAxis} from "recharts";
 import moment from "moment";
 
 function calcAverage(values, index, size) {

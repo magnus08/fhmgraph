@@ -3,7 +3,6 @@ import readXlsxFile from "read-excel-file";
 import {CountySelect} from "./CountySelect";
 
 
-
 export function ChartContainer() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -23,16 +22,6 @@ export function ChartContainer() {
       console.log("Something went wrong when reading file: ", e);
 
     }
-  };
-
-  const parse = () => {
-    const titles = data[0].slice(1);
-    const index = titles.findIndex(t => t === "Stockholm") + 1;
-    const x = data.forEach (r => {
-      console.log(`Date: ${r[0]}, Num: ${r[index]}`);
-    });
-    console.log("Index: ", index);
-    return 0;
   };
 
   const wrap = (content) => (
