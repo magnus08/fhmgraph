@@ -1,5 +1,5 @@
 import React from 'react';
-import {Bar, CartesianGrid, ComposedChart, Line, XAxis, YAxis} from "recharts";
+import {Bar, CartesianGrid, ComposedChart, XAxis, YAxis} from "recharts";
 import moment from "moment";
 
 const formatXAxis = (tickItem) => moment(tickItem).format('MMDD');
