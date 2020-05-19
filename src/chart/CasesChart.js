@@ -19,19 +19,10 @@ function calcAverage(values, index, size) {
 
 }
 
-function formatXAxis(tickItem) {
-// If using moment.js
-  console.log("Tickitem: ", tickItem);
-  return moment(tickItem).format('MMDD')
-}
+const formatXAxis = (tickItem) => moment(tickItem).format('MMDD');
 
-export function Chart({dates, values, movingAverage}) {
-  console.log("Dates = ", dates);
-  console.log("Vals = ", values);
-
-
+export function CasesChart({dates, values, movingAverage}) {
   const data = dates.map((date, index) => ({date: formatXAxis(date), cases: values[index], average: calcAverage(values, index, movingAverage)}));
-  console.log("Composite data: ", data);
   return (
       <ComposedChart width={1200} height={600} data={data}>
         <Bar dataKey="cases" fill="#8884d8" />
