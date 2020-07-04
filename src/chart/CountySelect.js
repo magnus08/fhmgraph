@@ -3,6 +3,7 @@ import {CasesChart} from "./CasesChart";
 import {CasesCumulativeChart} from "./CasesCumulativeChart";
 import {CasesIncreaseChart} from "./CasesIncreaseChart";
 import {Grid} from "semantic-ui-react";
+import {ResponsiveContainer} from "recharts";
 
 export function CountySelect({data}) {
 
@@ -52,7 +53,7 @@ export function CountySelect({data}) {
       <Grid.Row columns="1">
         <Grid.Column>
           Moving average: <input type="number" value={avg} onChange={e => setAvg(e.target.value)}/>
-          <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg}/>
+            <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg}/>
         </Grid.Column>
       </Grid.Row>
     </>

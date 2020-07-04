@@ -24,7 +24,7 @@ const formatXAxis = (tickItem) => moment(tickItem).format('MMDD');
 export function CasesChart({dates, values, movingAverage}) {
   const data = dates.map((date, index) => ({date: formatXAxis(date), cases: values[index], average: calcAverage(values, index, movingAverage)}));
   return (
-      <ComposedChart width={1200} height={600} data={data}>
+      <ComposedChart width={900} height={500} data={data}>
         <Bar dataKey="cases" fill="#8884d8" />
         <Line type="monotone" dataKey="average" stroke="#000000" strokeWidth={2} dot={false} />
 
