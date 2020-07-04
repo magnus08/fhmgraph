@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {CasesChart} from "./CasesChart";
 import {CasesCumulativeChart} from "./CasesCumulativeChart";
 import {CasesIncreaseChart} from "./CasesIncreaseChart";
+import {Grid} from "semantic-ui-react";
 
 export function CountySelect({data}) {
 
@@ -31,19 +32,29 @@ export function CountySelect({data}) {
   const dataCleaned = data.slice(1);
 
   return (
-    <div>
-      Chart: <select value={chartType.id} onChange={(e) => {console.log("What???", e.target.value); setChartType(chartTypes.find(c => c.id === e.target.value))}}>
-        {chartTypes.map((t) =>
-          <option key={t.id} value={t.id}>{t.name}</option>
-        )}
-      </select>
-      County: <select value={county} onChange={(e) => setCounty(parseInt(e.target.value))}>
-        {counties.map((c,i) =>
-          <option key={i} value={i}>{c}</option>
-        )}
-      </select>
-      Moving average: <input type="number" value={avg} onChange={e => setAvg(e.target.value)}/>
-      <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg}/>
-    </div>
+    <>
+      <Grid.Row columns="3">
+        <Grid.Column>
+          Chart: <select value={chartType.id} onChange={(e) => {console.log("What???", e.target.value); setChartType(chartTypes.find(c => c.id === e.target.value))}}>
+          {chartTypes.map((t) =>
+            <option key={t.id} value={t.id}>{t.name}</option>
+          )}
+        </select>
+        </Grid.Column>
+        <Grid.Column>
+          County: <select value={county} onChange={(e) => setCounty(parseInt(e.target.value))}>
+          {counties.map((c,i) =>
+            <option key={i} value={i}>{c}</option>
+          )}
+        </select>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row columns="1">
+        <Grid.Column>
+          Moving average: <input type="number" value={avg} onChange={e => setAvg(e.target.value)}/>
+          <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg}/>
+        </Grid.Column>
+      </Grid.Row>
+    </>
   );
 }
