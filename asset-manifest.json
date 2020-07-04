@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fhmgraph/static/css/main.f2ea30be.chunk.css",
+    "main.js": "/fhmgraph/static/js/main.8f717b15.chunk.js",
+    "main.js.map": "/fhmgraph/static/js/main.8f717b15.chunk.js.map",
+    "runtime-main.js": "/fhmgraph/static/js/runtime-main.1728ec83.js",
+    "runtime-main.js.map": "/fhmgraph/static/js/runtime-main.1728ec83.js.map",
+    "static/js/2.c0d130b3.chunk.js": "/fhmgraph/static/js/2.c0d130b3.chunk.js",
+    "static/js/2.c0d130b3.chunk.js.map": "/fhmgraph/static/js/2.c0d130b3.chunk.js.map",
+    "index.html": "/fhmgraph/index.html",
+    "precache-manifest.81a2e8593d5f4d5d1e7a7ba2c90dd11f.js": "/fhmgraph/precache-manifest.81a2e8593d5f4d5d1e7a7ba2c90dd11f.js",
+    "service-worker.js": "/fhmgraph/service-worker.js",
+    "static/css/main.f2ea30be.chunk.css.map": "/fhmgraph/static/css/main.f2ea30be.chunk.css.map",
+    "static/js/2.c0d130b3.chunk.js.LICENSE.txt": "/fhmgraph/static/js/2.c0d130b3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1728ec83.js",
+    "static/js/2.c0d130b3.chunk.js",
+    "static/css/main.f2ea30be.chunk.css",
+    "static/js/main.8f717b15.chunk.js"
+  ]
+}
