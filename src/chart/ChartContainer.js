@@ -26,13 +26,16 @@ export function ChartContainer() {
   };
 
   const wrap = (content) => (
-    <Grid columns={1}>
-      <Grid.Row>
+    <Grid>
+      <Grid.Row columns={2}>
         <Grid.Column>
           <input type="file" onChange={(e) => read(e.target.files[0])}/>
         </Grid.Column>
+        <Grid.Column>
+          <div>wtf</div>
+        </Grid.Column>
       </Grid.Row>
-      <Grid.Row>
+      <Grid.Row columns={1}>
         <Grid.Column>
           {content}
         </Grid.Column>

@@ -33,14 +33,16 @@ export function CountySelect({data}) {
   const dataCleaned = data.slice(1);
 
   return (
-    <>
-      <Grid.Row columns="3">
+    <Grid>
+      <Grid.Row columns={3}>
         <Grid.Column>
-          Chart: <select value={chartType.id} onChange={(e) => {console.log("What???", e.target.value); setChartType(chartTypes.find(c => c.id === e.target.value))}}>
-          {chartTypes.map((t) =>
-            <option key={t.id} value={t.id}>{t.name}</option>
-          )}
-        </select>
+          <div>
+            Chart: <select value={chartType.id} onChange={(e) => {console.log("What???", e.target.value); setChartType(chartTypes.find(c => c.id === e.target.value))}}>
+            {chartTypes.map((t) =>
+              <option key={t.id} value={t.id}>{t.name}</option>
+            )}
+          </select>
+          </div>
         </Grid.Column>
         <Grid.Column>
           County: <select value={county} onChange={(e) => setCounty(parseInt(e.target.value))}>
@@ -49,13 +51,17 @@ export function CountySelect({data}) {
           )}
         </select>
         </Grid.Column>
-      </Grid.Row>
-      <Grid.Row columns="1">
         <Grid.Column>
           Moving average: <input type="number" value={avg} onChange={e => setAvg(e.target.value)}/>
-            <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg}/>
         </Grid.Column>
       </Grid.Row>
-    </>
+      <Grid.Row columns={1}>
+        <Grid.Column>
+          <ResponsiveContainer>
+            <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg}/>
+          </ResponsiveContainer>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 }
