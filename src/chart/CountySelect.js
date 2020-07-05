@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {CasesChart} from "./CasesChart";
 import {CasesCumulativeChart} from "./CasesCumulativeChart";
 import {CasesIncreaseChart} from "./CasesIncreaseChart";
-import {Grid} from "semantic-ui-react";
+import {Grid, Input, Select} from "semantic-ui-react";
 import {ResponsiveContainer} from "recharts";
 
 export function CountySelect({data}) {
@@ -36,23 +36,13 @@ export function CountySelect({data}) {
     <Grid>
       <Grid.Row columns={3}>
         <Grid.Column>
-          <div>
-            Chart: <select value={chartType.id} onChange={(e) => {console.log("What???", e.target.value); setChartType(chartTypes.find(c => c.id === e.target.value))}}>
-            {chartTypes.map((t) =>
-              <option key={t.id} value={t.id}>{t.name}</option>
-            )}
-          </select>
-          </div>
+          <Select label="Type" value={chartType.id}  options={chartTypes.map((t, i) => ({key: t.id, value: t.id, text: t.name}))} onChange={(e, data) => setChartType(chartTypes.find(c => c.id === data.value))}/>
         </Grid.Column>
         <Grid.Column>
-          County: <select value={county} onChange={(e) => setCounty(parseInt(e.target.value))}>
-          {counties.map((c,i) =>
-            <option key={i} value={i}>{c}</option>
-          )}
-        </select>
+          <Select value={county}  options={counties.map((c, i) => ({key: i, value: i, text: c}))} onChange={(e, data) => setCounty(parseInt(data.value))}/>
         </Grid.Column>
         <Grid.Column>
-          Moving average: <input type="number" value={avg} onChange={e => setAvg(e.target.value)}/>
+          <Input label="Moving Avg" type="number" value={avg} onChange={e => setAvg(e.target.value)}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row columns={1}>

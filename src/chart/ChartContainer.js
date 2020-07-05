@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import readXlsxFile from "read-excel-file";
 import {CountySelect} from "./CountySelect";
-import {Grid} from "semantic-ui-react";
+import {Grid, Input} from "semantic-ui-react";
 
 
 export function ChartContainer() {
@@ -27,12 +27,9 @@ export function ChartContainer() {
 
   const wrap = (content) => (
     <Grid>
-      <Grid.Row columns={2}>
+      <Grid.Row columns={1}>
         <Grid.Column>
-          <input type="file" onChange={(e) => read(e.target.files[0])}/>
-        </Grid.Column>
-        <Grid.Column>
-          <div>wtf</div>
+          <Input type="file" onChange={(e) => read(e.target.files[0])}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row columns={1}>
