@@ -12,6 +12,7 @@ export function ChartContainer() {
   const read = (file) => {
     setLoading(true);
     try {
+      console.log("Gogo read XlsX");
       readXlsxFile(file, {sheet: 1}).then((rows) => {
         console.log("Rows = ", rows);
         setData(rows);
