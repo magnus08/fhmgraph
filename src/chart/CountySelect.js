@@ -4,18 +4,22 @@ import {CasesCumulativeChart} from "./CasesCumulativeChart";
 import {CasesIncreaseChart} from "./CasesIncreaseChart";
 import {Grid, Input, Select} from "semantic-ui-react";
 import {ResponsiveContainer} from "recharts";
+import {population_map} from "../utils/population";
 
 export function CountySelect({data}) {
 
   const chartTypes = [
     {
-      id: "cases", name: "Cases per day", Component: CasesChart,
+      id: "cases_normalized", name: "Cases per day normalized", Component: CasesChart, normalize: true,
     },
     {
-      id: "casesCumulative", name: "Cases cumulative", Component: CasesCumulativeChart,
+      id: "cases", name: "Cases per day", Component: CasesChart, normalize: false,
     },
     {
-      id: "casesIncrease", name: "Cases increase per day", Component: CasesIncreaseChart,
+      id: "casesCumulative", name: "Cases cumulative", Component: CasesCumulativeChart, normalize: false,
+    },
+    {
+      id: "casesIncrease", name: "Cases increase per day", Component: CasesIncreaseChart, normalize: false,
     },
   ];
 
@@ -32,6 +36,14 @@ export function CountySelect({data}) {
   const len = dataCleaned.length;
   const getDates = () => dataCleaned.map(d => d[0]).slice(days ? len-days : 0); 
   const getValues = () => dataCleaned.map(d => d[1 + county]).slice(days ? len-days : 0);
+  const county_name = counties[county];
+  const getTotal = () => {
+    console.log("map = ", population_map);
+    console.log("county_name = ", county_name);
+    return population_map[county_name];
+  }
+
+  console.log("Total = ", getTotal());
 
   return (
     <Grid>
@@ -52,7 +64,7 @@ export function CountySelect({data}) {
       <Grid.Row columns={1}>
         <Grid.Column>
           <ResponsiveContainer>
-            <chartType.Component dates={getDates()} values={getValues()} movingAverage={avg} days={days}/>
+            <chartType.Component dates={getDates()} values={getValues()} total={getTotal()} movingAverage={avg} normalize={chartType.normalize}/>
           </ResponsiveContainer>
         </Grid.Column>
       </Grid.Row>

@@ -19,10 +19,20 @@ function calcAverage(values, index, size) {
 
 }
 
+
 const formatXAxis = (tickItem) => moment(tickItem).format('MMDD');
 
-export function CasesChart({dates, values, movingAverage}) {
-  const data = dates.map((date, index) => ({date: formatXAxis(date), cases: values[index], average: calcAverage(values, index, movingAverage)}));
+export function CasesChart({dates, values, movingAverage, normalize, total}) {
+
+  function normalizeValue(val) {
+    if(normalize) {
+      return 14*100_000*val/total
+    } else {
+      return val;
+    }
+  }
+
+  const data = dates.map((date, index) => ({date: formatXAxis(date), cases: normalizeValue(values[index]), average: normalizeValue(calcAverage(values, index, movingAverage))}));
   return (
       <ComposedChart width={1200} height={600}  data={data}>
         <Bar dataKey="cases" fill="#8884d8" />
